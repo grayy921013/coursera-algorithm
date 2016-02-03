@@ -6,9 +6,9 @@ import java.util.Objects;
 import java.util.Random;
 
 public class RandomizedQueue<Item> implements Iterable<Item> {
-    int capacity = 1;
-    Item[] array = (Item[]) new Object[1];
-    int size = 0;
+    private int capacity = 1;
+    private Item[] array = (Item[]) new Object[1];
+    private int size = 0;
 
     public RandomizedQueue() {
         // construct an empty randomized queue
@@ -63,8 +63,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     public Item dequeue() {
         // remove and return a random item
         checkEmpty();
-        Random random = new Random(System.currentTimeMillis());
-        int i = random.nextInt(size);
+        int i = StdRandom.uniform(size);
         Item item = array[i];
         array[i] = array[--size];
         array[size] = null;
@@ -77,8 +76,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     public Item sample() {
         // return (but do not remove) a random item
         checkEmpty();
-        Random random = new Random(System.currentTimeMillis());
-        int i = random.nextInt(size);
+        int i = StdRandom.uniform(size);
         return array[i];
     }
 
